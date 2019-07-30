@@ -88,7 +88,7 @@ class WheelCurvedPicker extends React.Component {
 
   _onValueChange = e => {
     if (this.props.onValueChange) {
-      this.props.onValueChange(e.nativeEvent.data);
+      this.props.onValueChange(e.nativeEvent.data, e.nativeEvent.index);
     }
   };
 
