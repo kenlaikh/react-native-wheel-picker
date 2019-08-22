@@ -2,7 +2,7 @@ package com.zyu;
 
 import android.graphics.Color;
 
-import com.aigestudio.wheelpicker.core.AbstractWheelPicker;
+import com.aigestudio.wheelpicker.WheelPicker;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
@@ -27,10 +27,22 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
     @Override
     protected ReactWheelCurvedPicker createViewInstance(ThemedReactContext reactContext) {
         ReactWheelCurvedPicker picker = new ReactWheelCurvedPicker(reactContext);
-        picker.setTextColor(Color.LTGRAY);
-        picker.setCurrentTextColor(Color.WHITE);
-        picker.setTextSize(DEFAULT_TEXT_SIZE);
+        picker.setItemTextColor(Color.LTGRAY);
+        picker.setItemTextSize(DEFAULT_TEXT_SIZE);
+        picker.setSelectedItemTextColor(Color.WHITE);
         picker.setItemSpace(DEFAULT_ITEM_SPACE);
+        picker.setIndicator(true);
+        picker.setIndicatorSize(1);
+        picker.setIndicatorColor(Color.BLACK);
+        picker.setCurtain(false);
+        picker.setCurtainColor(Color.YELLOW);
+        picker.setAtmospheric(true);
+        picker.setCurved(true);
+        picker.setVisibleItemCount(5);
+        /*
+         * ALIGN_CENTER = 0, ALIGN_LEFT = 1, ALIGN_RIGHT = 2;
+         */
+        picker.setItemAlign(0);
 
         return picker;
     }
@@ -59,8 +71,8 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
 
     @ReactProp(name="selectedIndex")
     public void setSelectedIndex(ReactWheelCurvedPicker picker, int index) {
-        if (picker != null && picker.getState() == AbstractWheelPicker.SCROLL_STATE_IDLE) {
-            picker.setItemIndex(index);
+        if (picker != null && picker.getState() == WheelPicker.SCROLL_STATE_IDLE) {
+            picker.setSelectedItemPosition(index);
             picker.invalidate();
         }
     }
@@ -68,15 +80,21 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
     @ReactProp(name="textColor", customType = "Color")
     public void setTextColor(ReactWheelCurvedPicker picker, Integer color) {
         if (picker != null) {
-            picker.setCurrentTextColor(color);
-            picker.setTextColor(color);
+            picker.setItemTextColor(color);
+        }
+    }
+
+    @ReactProp(name="curtainColor", customType = "Color")
+    public void setCurtainColor(ReactWheelCurvedPicker picker, Integer color) {
+        if (picker != null) {
+            picker.setCurtainColor(color);
         }
     }
 
     @ReactProp(name="textSize")
     public void setTextSize(ReactWheelCurvedPicker picker, int size) {
         if (picker != null) {
-            picker.setTextSize((int) PixelUtil.toPixelFromDIP(size));
+            picker.setItemTextSize((int) PixelUtil.toPixelFromDIP(size));
         }
     }
 
@@ -86,28 +104,60 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
             picker.setItemSpace((int) PixelUtil.toPixelFromDIP(space));
         }
     }
-    
-    @ReactProp(name="lineColor")
-    public void setLineColor(ReactWheelCurvedPicker picker, String color) {
+
+    @ReactProp(name="indicator")
+    public void setIndicator(ReactWheelCurvedPicker picker, boolean hasIndicator) {
         if (picker != null) {
-            picker.setLineColor(Utils.parseColor(color));
-            picker.invalidate();
+            picker.setIndicator(hasIndicator);
         }
     }
 
-    @ReactProp(name="lineGradientColorFrom")
-    public void setLineGradientColorFrom(ReactWheelCurvedPicker picker, String color) {
+    @ReactProp(name="indicatorColor", customType = "Color")
+    public void setIndicatorColor(ReactWheelCurvedPicker picker, Integer color) {
         if (picker != null) {
-            picker.setLineGradientColorFrom(Utils.parseColor(color));
-            picker.invalidate();
+            picker.setIndicatorColor(color);
         }
     }
 
-    @ReactProp(name="lineGradientColorTo")
-    public void setLineGradientColorTo(ReactWheelCurvedPicker picker, String color) {
+    @ReactProp(name="indicatorSize")
+    public void setIndicatorSize(ReactWheelCurvedPicker picker, int size) {
         if (picker != null) {
-            picker.setLineGradientColorTo(Utils.parseColor(color));
-            picker.invalidate();
+            picker.setIndicatorSize(size);
+        }
+    }
+
+    @ReactProp(name="curtain")
+    public void setCurtain(ReactWheelCurvedPicker picker, boolean hasCurtain) {
+        if (picker != null) {
+            picker.setCurtain(hasCurtain);
+        }
+    }
+
+    @ReactProp(name="selectTextColor", customType = "Color")
+    public void setSelectedTextColor(ReactWheelCurvedPicker picker, Integer color) {
+        if (picker != null) {
+            picker.setSelectedItemTextColor(color);
+        }
+    }
+
+    @ReactProp(name="atmospheric")
+    public void setAtmospheric(ReactWheelCurvedPicker picker, boolean hasAtmospheric) {
+        if (picker != null) {
+            picker.setAtmospheric(hasAtmospheric);
+        }
+    }
+
+    @ReactProp(name="curved")
+    public void setCurved(ReactWheelCurvedPicker picker, boolean hasCurved) {
+        if (picker != null) {
+            picker.setCurved(hasCurved);
+        }
+    }
+
+    @ReactProp(name="visibleItemCount")
+    public void setVisibleItemCount(ReactWheelCurvedPicker picker, int num) {
+        if (picker != null) {
+            picker.setVisibleItemCount(num);
         }
     }
 
