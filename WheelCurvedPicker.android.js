@@ -81,7 +81,7 @@ class WheelCurvedPicker extends React.Component {
 
   static defaultProps = {
     itemStyle: { color: "white", fontSize: 26 },
-    indicatorStyle: { color: "#33000000", fontSize: 1 },
+    indicatorStyle: { color: "#33000000", fontSize: 2 },
     itemSpace: 20
   };
 
