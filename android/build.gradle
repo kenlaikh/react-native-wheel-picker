@@ -16,7 +16,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.github.laikahei1993:WheelPicker:master-SNAPSHOT"
+    compile "com.github.laikahei1993:WheelPicker:1.1.3"
     compile 'com.facebook.react:react-native:+'
 }
 
