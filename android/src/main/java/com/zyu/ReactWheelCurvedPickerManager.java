@@ -38,7 +38,7 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         picker.setCurtainColor(Color.YELLOW);
         picker.setAtmospheric(true);
         picker.setCurved(true);
-        picker.setVisibleItemCount(5);
+        picker.setVisibleItemCount(7);
         /*
          * ALIGN_CENTER = 0, ALIGN_LEFT = 1, ALIGN_RIGHT = 2;
          */
