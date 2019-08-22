@@ -77,17 +77,17 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         }
     }
 
-    @ReactProp(name="textColor", customType = "Color")
-    public void setTextColor(ReactWheelCurvedPicker picker, Integer color) {
+    @ReactProp(name="textColor")
+    public void setTextColor(ReactWheelCurvedPicker picker, String color) {
         if (picker != null) {
-            picker.setItemTextColor(color);
+            picker.setItemTextColor(Utils.parseColor(color));
         }
     }
 
-    @ReactProp(name="curtainColor", customType = "Color")
-    public void setCurtainColor(ReactWheelCurvedPicker picker, Integer color) {
+    @ReactProp(name="curtainColor")
+    public void setCurtainColor(ReactWheelCurvedPicker picker, String color) {
         if (picker != null) {
-            picker.setCurtainColor(color);
+            picker.setCurtainColor(Utils.parseColor(color));
         }
     }
 
@@ -112,10 +112,10 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         }
     }
 
-    @ReactProp(name="indicatorColor", customType = "Color")
-    public void setIndicatorColor(ReactWheelCurvedPicker picker, Integer color) {
+    @ReactProp(name="indicatorColor")
+    public void setIndicatorColor(ReactWheelCurvedPicker picker, String color) {
         if (picker != null) {
-            picker.setIndicatorColor(color);
+            picker.setIndicatorColor(Utils.parseColor(color));
         }
     }
 
@@ -133,10 +133,10 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
         }
     }
 
-    @ReactProp(name="selectTextColor", customType = "Color")
-    public void setSelectedTextColor(ReactWheelCurvedPicker picker, Integer color) {
+    @ReactProp(name="selectTextColor")
+    public void setSelectedTextColor(ReactWheelCurvedPicker picker, String color) {
         if (picker != null) {
-            picker.setSelectedItemTextColor(color);
+            picker.setSelectedItemTextColor(Utils.parseColor(color));
         }
     }
 
